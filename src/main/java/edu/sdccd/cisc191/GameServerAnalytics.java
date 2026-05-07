@@ -16,7 +16,11 @@ public class GameServerAnalytics {
     public static List<String> findTopNUsernamesByRating(Collection<PlayerAccount> players, int n) {
 
         return players.stream()
-                .sorted((a, b) -> Integer.compare(b.rating(), a.rating())) // highest first
+                .sorted((a, b) -> Integer.compare(b.rating(), a.rating()))// highest first
+                /* using
+                 * .sorted(Comparator.comparingInt(PlayerAccount :: rating).reversed()).thenComparing(PlayerAccount::username))
+                 * would make it more readable and ensure consistency
+                 */
                 .limit(n)
                 .map(PlayerAccount::username)
                 .toList();

@@ -12,14 +12,14 @@ public class GenericMatchQueue<T> {
 
     public T dequeue() {
         if (items.isEmpty()) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("List can't be empty");
         }
         return items.removeFirst(); // remove from front
     }
 
     public T peek() {
         if (items.isEmpty()) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("List can't be empty");
         }
         return items.getFirst(); // look at front
     }
